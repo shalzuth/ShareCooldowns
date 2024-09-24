@@ -69,8 +69,11 @@ local function ShareCooldown()
   if owner and owner.auraType then
     local buffType = 'HARMFUL'
     if owner.auraType == 'Buff' then buffType = 'HELPFUL' end
-    local auraData = C_UnitAuras.GetAuraDataByIndex('player', owner.buttonInfo.index, buffType);
-    ShareBuffInfo(auraData)
+    if owner.buttonInfo.index then
+      local auraData = C_UnitAuras.GetAuraDataByIndex('player', owner.buttonInfo.index, buffType);
+      ShareBuffInfo(auraData)
+    end
+    -- todo, add shaman weapon imbue
   elseif owner and owner.action and owner:GetName() and owner:GetName():find("Button") then
     local actionType, id = GetActionInfo(owner.action);
     if actionType == "spell" then
