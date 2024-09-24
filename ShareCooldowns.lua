@@ -1,8 +1,9 @@
 local frame = CreateFrame("Frame")
 local function Send(msg)
   if IsInGroup() then
-    local group = "PARTY"
+    local group = "INSTANCE_CHAT"
     if IsInRaid() then group = "RAID" end
+    if IsInGroup(LE_PARTY_CATEGORY_HOME) then group = "PARTY" end
     SendChatMessage(msg, group)
   else
     print(msg);
