@@ -5,7 +5,7 @@ local function Send(msg)
     if IsInRaid() then group = "RAID" end
     SendChatMessage(msg, group)
   else
-    DEFAULT_CHAT_FRAME:AddMessage(msg);
+    print(msg);
   end
 end
 local function ShareSpellCooldown(spellID)
@@ -70,7 +70,7 @@ local function ShareCooldown()
     if owner.auraType == 'Buff' then buffType = 'HELPFUL' end
     local auraData = C_UnitAuras.GetAuraDataByIndex('player', owner.buttonInfo.index, buffType);
     ShareBuffInfo(auraData)
-  elseif owner and owner:GetName() and owner:GetName():find("Button") then
+  elseif owner and owner.action and owner:GetName() and owner:GetName():find("Button") then
     local actionType, id = GetActionInfo(owner.action);
     if actionType == "spell" then
       local spellName, spellID = GameTooltip:GetSpell()
@@ -87,6 +87,7 @@ local function ShareCooldown()
   end
 end
 
+local isCtrlPressed = false
 frame:SetScript("OnUpdate", function(self)
   if IsControlKeyDown() and not isCtrlPressed then
     isCtrlPressed = true
