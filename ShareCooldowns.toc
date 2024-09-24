@@ -1,0 +1,7 @@
+## Author: shalzuth
+## Interface: 110002
+## Title: ShareCooldowns
+## Version: 1.0.0
+## IconTexture: 2115322
+## Notes: ShareCooldowns - ShareCooldowns allows you to announce cooldowns for specific abilities on demand, as well as buffs/debuffs on yourself and the target
+ShareCooldowns.lua
